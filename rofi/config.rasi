@@ -1,0 +1,6 @@
+
+//@theme "/nix/store/khcyqdjaa8kl0rhmpd83azz62vjkvngr-rofi-1.7.9+wayland1/share/rofi/themes/arthur.rasi"
+
+//@theme "/nix/store/r0asjm168129bacs5ndh10y56y58sjly-rofi-1.7.9+wayland1/share/rofi/themes/arthur.rasi"
+
+@theme "catppuccin-default"
