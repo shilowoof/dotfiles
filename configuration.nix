@@ -68,6 +68,11 @@
     options = "--delete-older-than 1d";
   };
 
+  nixpkgs.config.permittedInsecurePackages = [
+    "ventoy-gtk3-1.1.05"
+  ];
+    
+
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -161,12 +166,27 @@
      quickshell
      killall
      wine64
+     wine
      rustup
      rustc
      rustup-toolchain-install-master
      cmake
      glibc
      gcc
+     alvr
+     tplay
+     kaffeine
+     mpv
+     btop
+     kdePackages.k3b
+     python313Packages.pip
+     cdrtools
+     kdePackages.isoimagewriter
+     lunar-client
+     tidal-dl
+     discord
+     pipx
+
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
   ];
@@ -178,6 +198,23 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
+
+  # steamvr thing i think?
+  boot.kernelPatches = [
+    {
+      name = "amdgpu-ignore-ctx-privileges";
+      patch = pkgs.fetchpatch {
+        name = "cap_sys_nice_begone.patch";
+        url = "https://github.com/Frogging-Family/community-patches/raw/master/linux61-tkg/cap_sys_nice_begone.mypatch";
+        hash = "sha256-Y3a0+x2xvHsfLax/uwycdJf3xLxvVfkfDVqjkxNaYEo=";
+      };
+    }
+  ];
+
+  # bluetooth
+  
+  hardware.bluetooth.enable = true; # enables support for Bluetooth
+  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
 
   # gtk catppuccin (didnt work) 
   #   gtk = {
